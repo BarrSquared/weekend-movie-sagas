@@ -14,17 +14,15 @@ function MovieDetails() {
 
     let displayMovie = genre.movie
 
-    return(
-        <>
-            <h1>Movie Genres</h1>
+    return(         
             <div key={ movie.id }>
+            <h1>Movie Genres</h1>
                 {/* <p>{ displayMovie.description}</p> */}
                 {genre.map( genre => (
                     <p>{genre.name}</p>
                 ))}
             <button onClick={movieListLink}>Back to List</button>
             </div>
-        </>
     )
 }
 

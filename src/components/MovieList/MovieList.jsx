@@ -20,7 +20,7 @@ function MovieList() {
     const movieDetailsLink = (movie) => {
         dispatch({ type: 'FETCH_MOVIE_DETAILS', payload: movie })
         dispatch({ type: 'FETCH_MOVIE_GENRES', payload: movie })
-        history.push('/details')
+        history.push('/MovieDetails')
     }
 
     return (

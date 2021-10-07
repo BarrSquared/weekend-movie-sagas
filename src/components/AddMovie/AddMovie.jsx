@@ -5,7 +5,7 @@ function AddMovie() {
 
     return(
         <>
-
+        
         </>
     )
 }
