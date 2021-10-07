@@ -6,20 +6,25 @@ function MovieDetails() {
     const dispatch = useDispatch();
     const history = useHistory();
     const movie = useSelector(store => store.movieDetails);
-    const genre = useSelector(store => store.genre);
+    const genre = useSelector(store => store.genres);
 
     const movieListLink = () => {
         history.push('/')
     }
 
-    let displayMovie = {}
-    displayMovie = movie
+    let displayMovie = genre.movie
 
     return(
-        <div key={ movie.id }>
-            <p>{ displayMovie.description}</p>
-        
-        </div>
+        <>
+            <h1>Movie Genres</h1>
+            <div key={ movie.id }>
+                {/* <p>{ displayMovie.description}</p> */}
+                {genre.map( genre => (
+                    <p>{genre.name}</p>
+                ))}
+            <button onClick={movieListLink}>Back to List</button>
+            </div>
+        </>
     )
 }
 
