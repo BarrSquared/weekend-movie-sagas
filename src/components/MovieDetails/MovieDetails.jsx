@@ -16,7 +16,7 @@ function MovieDetails() {
 
     return(         
         <>
-            <h1>Movie Genres</h1>
+            <h1>Movie Details</h1>
                 
             <button onClick={movieListLink}>Back to List</button>
         </>
