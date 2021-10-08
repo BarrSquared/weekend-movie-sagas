@@ -68,8 +68,8 @@ This should show:
 
 The Add Movie page should have the buttons:
 
-- [] `Cancel` button, which should bring the user to the Home/List Page
-- [] `Save` button, which should save these inputs in the database and bring the user to the Home/List Page (which now has the new movie)
+- [X] `Cancel` button, which should bring the user to the Home/List Page
+- [X] `Save` button, which should save these inputs in the database and bring the user to the Home/List Page (which now has the new movie)
 
 **Base functionality does not require being able to select more than one genre for a new movie**
 

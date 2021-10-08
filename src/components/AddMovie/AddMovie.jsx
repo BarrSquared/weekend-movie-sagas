@@ -90,14 +90,3 @@ function AddMovie() {
 }
 
 export default AddMovie;
-
-// - [X] an input field (for the movie title)
-// - [X] an input field (for the movie poster image URL))
-// - [X] a textarea (for the movie description)
-// - [] a dropdown (for the genres)
-
-// The Add Movie page should have the buttons:
-
-// - [X] `Cancel` button, which should bring the user to the Home/List Page
-// - [] `Save` button, which should save these inputs in the database and 
-// bring the user to the Home/List Page (which now has the new movie)
