@@ -27,14 +27,9 @@ function AddMovie() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        if(newMovie.genres.length != 0) {
-            dispatch({type: 'ADD_MOVIE', payload: newMovie});
-            history.push("/");
-        } else {
-            alert('You must select a movie genre')
-            return;
-        }
+        
+        dispatch({type: 'ADD_MOVIE', payload: newMovie});
+        history.push("/");
     }
 
     const handleCancel = () => {
