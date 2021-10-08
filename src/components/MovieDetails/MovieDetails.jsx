@@ -9,7 +9,7 @@ function MovieDetails() {
     const genre = useSelector(store => store.genres);
 
     const movieListLink = () => {
-        history.push('/MovieList')
+        history.push('/')
     }
 
     let displayMovie = genre.movie
