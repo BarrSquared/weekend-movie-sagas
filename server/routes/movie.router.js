@@ -51,9 +51,9 @@ router.post('/', (req, res) => {
       pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genre_id]).then(result => {
         //Now that both are done, send back success!
         res.sendStatus(201);
-      }).catch(err => {
+      }).catch((err) => {
         // catch for second query
-        console.log(err);
+        console.log('Error in router post', err);
         res.sendStatus(500)
       })
 

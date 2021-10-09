@@ -67,7 +67,7 @@ function AddMovie() {
                     onChange={ (event) => 
                     setNewMovie({...newMovie, poster: event.target.value})}
                 />
-                <select selected value={genreList} onChange={setGenre}>
+                <select selected value={newMovie.genre} onChange={setGenre}>
                     <option value={1}>Adventure</option>
                     <option value={2}>Animated</option>
                     <option value={3}>Biographical</option>

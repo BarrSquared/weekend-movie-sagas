@@ -21,6 +21,7 @@ function* rootSaga() {
 
 function* postNewMovie(action) {
     try {
+        console.log('Action from postNewMovie: ', action)
         const newMovie = action.payload;
         yield axios.post('/api/movie', newMovie);
         yield put({type: 'ADD_MOVIE'});
