@@ -17,6 +17,11 @@ function* rootSaga() {
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('ADD_MOVIE', postNewMovie);
     yield takeEvery('FETCH_DETAILS', fetchDetails);
+    yield takeEvery('FETCH_GENRES_DETAILS', fetchGenreDetails);
+}
+
+function* fetchGenreDetails(action) {
+    
 }
 
 function* fetchDetails(action) {
