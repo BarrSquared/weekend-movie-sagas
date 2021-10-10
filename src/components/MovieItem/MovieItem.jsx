@@ -9,7 +9,7 @@ function MovieItem({movie}) {
 
     const movieDetailsLink = (movie) => {
         dispatch({ type: 'FETCH_DETAILS', payload: movie })
-        // dispatch({ type: 'FETCH_GENRES', payload: movie })
+        dispatch({ type: 'FETCH_GENRES', payload: movie })
         history.push('/MovieDetails')
     }
 
