@@ -21,7 +21,14 @@ function* rootSaga() {
 }
 
 function* fetchGenreDetails(action) {
-    
+    try {
+        console.log('in fetchGenreDetails, action: ', action);
+        const genresToList = yield axios.get('/api/genre/genreDetails')
+        console.log('in fetchGenreDetails, action: ', genresToList.data);
+        yield put ({type: 'FETCH_GENRES_DETAILS', payload: genresToList.data})
+    } catch(error) {
+        console.log('ERROR in fetching genres for details page', error);
+    }
 }
 
 function* fetchDetails(action) {

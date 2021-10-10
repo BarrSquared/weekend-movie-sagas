@@ -8,9 +8,14 @@ function MovieDetails() {
     const movieDetails = useSelector(store => store.movieDetails);
     const genres = useSelector(store => store.genres);
 
-    // useEffect(() => {
-    //     dispatch({ type: 'FETCH_GENRES_DETAILS' });
-    // }, []);
+    const getGenresForDetails = () => {
+        dispatch({ type: 'FETCH_GENRES_DETAILS' });
+    }
+
+    useEffect(() => {
+        console.log('MOVIE details dispatch for genres firing')
+        getGenresForDetails();
+    }, []);
 
     const movieListLink = () => {
         console.log('In MovieDetails ', genres);
