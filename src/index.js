@@ -25,7 +25,7 @@ function* fetchGenreDetails(action) {
         console.log('in fetchGenreDetails, action: ', action);
         const genreResponse = yield axios.get('/api/genre/genreDetails')
         console.log('in fetchGenreDetails, action: ', genreResponse.data);
-        yield put ({type: 'FETCH_GENRES_DETAILS', payload: genreResponse.data})
+        yield put ({type: 'SET_GENRES', payload: genreResponse.data})
     } catch(error) {
         console.log('ERROR in fetching genres for details page', error);
     }
@@ -47,8 +47,8 @@ function* postNewMovie(action) {
     try {
         console.log('Action from postNewMovie: ', action)
         const newMovie = action.payload;
-        yield axios.post('/api/movie', newMovie);
-        yield put({type: 'ADD_MOVIE'});
+        yield axios.post('/api/movie', newMovie); // line 51 was SET_MOVIES
+        yield put({type: 'SET_MOVIES'}); //fix//TODO: rethink where this is going and what it's doing
     } catch(error) {
         console.log('Error in post movie', error);
     }

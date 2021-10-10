@@ -16,7 +16,7 @@ function AddMovie() {
         title: '', poster: '', description: '', genres: '',
     });
 
-    function fetchGenres() {
+    const fetchGenres = () => {
         dispatch({type: 'FETCH_GENRES'});
     }
 
@@ -36,7 +36,7 @@ function AddMovie() {
         history.push("/");
     }    
 
-    const setGenre = (event) => {
+    const setGenre = (event) => { 
         setNewMovie({...newMovie, genres: event.target.value});
     }
     return(
