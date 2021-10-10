@@ -16,7 +16,19 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('ADD_MOVIE', postNewMovie);
+    yield takeEvery('FETCH_DETAILS', fetchDetails);
+}
 
+function* fetchDetails(action) {
+    try {
+        console.log('fetchDetails action, ', action);
+        const movieItemDetails = action.payload;
+        const details = yield axios.get(`/api/movie/movieDetails/${movieItemDetails.id}`);
+        console.log('FETCH details', details.data);
+        yield put({type: 'DETAILS', payload: details.data})
+    } catch(error) {
+        console.log('Error in FETCH details', error);
+    }
 }
 
 function* postNewMovie(action) {
@@ -30,9 +42,10 @@ function* postNewMovie(action) {
     }
 }
 
-function* fetchGenres() {
-
+function* fetchGenres(action) {
+    
     try {
+        console.log('fetchGenres action, ', action);
         const genres = yield axios.get('/api/genre');
         console.log('FETCH genres', genres.data);
         yield put({type: 'FETCH_GENRES', payload: genres.data})
@@ -60,7 +73,7 @@ const sagaMiddleware = createSagaMiddleware();
 // Used to store selected movie details
 const movieDetails = (state = [], action) => {
     switch (action.type) {
-        case 'SET_MOVIE_DETAIL':
+        case 'DETAILS':
             return action.payload;
         default: 
             return state;

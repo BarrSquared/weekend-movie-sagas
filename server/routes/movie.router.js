@@ -16,11 +16,14 @@ router.get('/', (req, res) => {
 
 });
 
-router.get('/:id', (req, res) => {
+router.get('/movieDetails/:id', (req, res) => {
   const queryText =  `SELECT * FROM "movies" WHERE "id" = $1;`;
   const movieId = req.params.id;
-  pool.query( queryText, [movieId]).then(result => {
-    res.send( result.rows )
+  
+  console.log('Error in router.get details', movieId);
+  pool.query( queryText, [movieId] ).then(result => {
+    res.send( result.rows[0] )
+    console.log('in router.get details result row', result.rows[0]);
   }).catch(error => {
     console.log('Error in router.get for movies');
     res.sendStatus(500);
