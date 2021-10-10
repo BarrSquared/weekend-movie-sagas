@@ -23,7 +23,9 @@ function* rootSaga() {
 function* fetchGenreDetails(action) {
     try {
         console.log('in fetchGenreDetails, action: ', action);
-        const genreResponse = yield axios.get('/api/genre/genreDetails')
+        const movie = action.payload;
+        // action has an object, payload, with property for id
+        const genreResponse = yield axios.get(`/api/genre/genreDetails/${movie.id}`);
         console.log('in fetchGenreDetails, action: ', genreResponse.data);
         yield put ({type: 'SET_GENRES', payload: genreResponse.data})
     } catch(error) {
@@ -33,10 +35,10 @@ function* fetchGenreDetails(action) {
 
 function* fetchDetails(action) {
     try {
-        console.log('fetchDetails action, ', action);
+        // console.log('fetchDetails action, ', action);
         const movieItemDetails = action.payload;
         const details = yield axios.get(`/api/movie/movieDetails/${movieItemDetails.id}`);
-        console.log('FETCH details', details.data);
+        // console.log('FETCH details', details.data);
         yield put({type: 'DETAILS', payload: details.data})
     } catch(error) {
         console.log('Error in FETCH details', error);
@@ -45,10 +47,10 @@ function* fetchDetails(action) {
 
 function* postNewMovie(action) {
     try {
-        console.log('Action from postNewMovie: ', action)
+        // console.log('Action from postNewMovie: ', action)
         const newMovie = action.payload;
         yield axios.post('/api/movie', newMovie); // line 51 was SET_MOVIES
-        yield put({type: 'SET_MOVIES'}); //fix//TODO: rethink where this is going and what it's doing
+        yield put({type: 'SET_NEW_GENRE'}); //fix//TODO: rethink where this is going and what it's doing
     } catch(error) {
         console.log('Error in post movie', error);
     }
@@ -57,9 +59,9 @@ function* postNewMovie(action) {
 function* fetchGenres(action) {
     
     try {
-        console.log('fetchGenres action, ', action);
+        // console.log('fetchGenres action, ', action);
         const genres = yield axios.get('/api/genre/genreDetails');
-        console.log('FETCH genres', genres.data);
+        // console.log('FETCH genres', genres.data);
         yield put({type: 'SET_GENRES', payload: genres.data})
     } catch(error) {
         console.log('Error in FETCH genres', error);
@@ -70,7 +72,7 @@ function* fetchAllMovies() {
     // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
-        console.log('get all:', movies.data);
+        // console.log('get all:', movies.data);
         yield put({ type: 'SET_MOVIES', payload: movies.data });
 
     } catch {
@@ -106,6 +108,7 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
+            console.log('in genres store, ', action.payload);
             return action.payload;
         default:
             return state;

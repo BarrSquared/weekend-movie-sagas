@@ -9,16 +9,16 @@ function MovieDetails() {
     const genres = useSelector(store => store.genres);
 
     const getGenresForDetails = () => {
-        dispatch({ type: 'FETCH_GENRES_DETAILS' });
+        dispatch({ type: 'FETCH_GENRES_DETAILS', payload: movieDetails });
     }
 
     useEffect(() => {
-        console.log('MOVIE details dispatch for genres firing')
+        // console.log('MOVIE details dispatch for genres firing')
         getGenresForDetails();
     }, []);
 
     const movieListLink = () => {
-        console.log('In MovieDetails ', genres);
+        // console.log('In MovieDetails ', genres);
         history.push('/')
     }
 
