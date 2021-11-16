@@ -4,9 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import MovieDetails from '../MovieDetails/MovieDetails';
 
-
-
-
 function AddMovie() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -24,7 +21,7 @@ function AddMovie() {
         console.log('in useEffect');
         fetchGenres();
     }, []);
-
+    // Event dispatch to trigger saga, addning new movie with payload data
     const handleSubmit = (event) => {
         event.preventDefault();
         
